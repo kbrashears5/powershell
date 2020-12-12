@@ -1,0 +1,9 @@
+{
+    "description": "PowerShell examples I've encountered over the years",
+    "homepage": "https://github.com/kbrashears5/powershell",
+    "keywords": [
+        "powershell",
+        "examples",
+        "scripting"
+    ]
+}
