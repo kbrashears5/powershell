@@ -5,20 +5,20 @@ Clean up repos, check out main branch, and prune all origin
 .PARAMETER path
 Path to folder with repo folders in it
 
-.PARAMETER branchToDelete
-Branch name to delete
-
 .PARAMETER mainBranchName
 Branch name of the main branch
+
+.PARAMETER branchToDelete
+Branch name to delete
 #>
 [CmdletBinding()]
 param (
     [Parameter(Mandatory = $true)]
     [string] $path,
     [Parameter(Mandatory = $true)]
-    [string] $branchToDelete,
-    [Parameter(Mandatory = $true)]
-    [string] $mainBranchName
+    [string] $mainBranchName,
+    [Parameter(Mandatory = $false)]
+    [string] $branchToDelete
 )
 
 Clear-Host
@@ -32,7 +32,9 @@ foreach ($folder in $folders) {
 
     git checkout $mainBranchName
 
-    git branch -D $branchToDelete
+    if ($branchToDelete -ne $null) {
+        git branch -D $branchToDelete
+    }
 
     git remote prune origin
 }
